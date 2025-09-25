@@ -295,7 +295,7 @@ scrape_configs:
 ## License & Contact
 
 * License: MIT 
-* Maintainers / Contacts: see the **Team** section above
+* Maintainers / Contacts: see the **[Team Members](#team-members)** section above
 
 ---
 
