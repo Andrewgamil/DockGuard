@@ -36,7 +36,7 @@ This repository contains a containerized URL shortener service instrumented for 
 
 ---
 
-## Team
+## Team Members
 
 * mohamed yousery [ Service Developer (Backend) ]
 * mohamed youssef [ Persistence & Database ]
