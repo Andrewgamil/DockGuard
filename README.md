@@ -8,7 +8,7 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 ## Table of Contents
 
 * [Project Overview](#project-overview)
-* [Team](#team)
+* [Team Members](#team)
 * [Tech Stack](#tech-stack)
 * [Architecture](#architecture)
 * [Component Ownership (5 equal, independent tasks)](#component-ownership-5-equal-independent-tasks)
