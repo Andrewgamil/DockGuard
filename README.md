@@ -1,6 +1,6 @@
 # Monitoring a Containerized URL Shortener Webservice
 
-**Project Objective**
+**Project Objective:**
 Build, containerize, and monitor a functional URL shortener webservice. The full stack — application + monitoring (Prometheus, Grafana) — runs locally using Docker.
 
 ---
