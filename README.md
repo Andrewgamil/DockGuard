@@ -8,7 +8,7 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 ## Table of Contents
 
 * [Project Overview](#project-overview)
-* [Drive link (documentation)](#project-overview)
+* [Drive Link (Documentation)](#drive-link-Documentation)
 * [Team Members](#team-members)
 * [Tech Stack](#tech-stack)
 * [Architecture](#architecture)
@@ -34,6 +34,12 @@ This repository contains a containerized URL shortener service instrumented for 
 * redirect short codes to long URLs,
 * expose Prometheus-compatible metrics,
 * be visualized and alerted on via Grafana.
+
+---
+
+## Drive Link (Documentation)
+
+link:  https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing
 
 ---
 
