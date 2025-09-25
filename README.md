@@ -137,7 +137,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 ---
 
-## Repository Layout (recommended)
+## Repository Layout 
 
 ```
 /
@@ -192,7 +192,7 @@ docker-compose up -d prometheus grafana
 
 ## Testing & Verification
 
-The Integration owner should automate these checks in `spinup-and-test.sh`. Example smoke tests:
+The Integration owner should automate these checks in `spinup-and-test.sh`. 
 
 1. Create a short URL:
 
@@ -279,7 +279,7 @@ scrape_configs:
 ## Contributing
 
 1. Pick an unclaimed component from **Component Ownership**.
-2. Create a branch `feature/<component>-<your-name>`.
+2. Create a branch `feature/<component>-<member-name>`.
 3. Add code, tests, and README updates for your component.
 4. Open a PR and request review from one other teammate.
 
@@ -287,16 +287,9 @@ scrape_configs:
 
 ## License & Contact
 
-* License: MIT (or choose your organization’s preferred license)
+* License: MIT 
 * Maintainers / Contacts: see the **Team** section above
 
 ---
 
-### Notes
 
-This README converts the project brief into a ready-to-use repo README. Drop this content into `README.md` at the repository root. If you want, I can also generate:
-
-* a `docker-compose.yml` skeleton wired for the three main services, or
-* a starter Flask app scaffold (service/) and `openapi.yaml`.
-
-Tell me which file you want next and I’ll paste it here.
