@@ -38,11 +38,11 @@ This repository contains a containerized URL shortener service instrumented for 
 
 ## Team
 
-* mohamed yousery
-* mohamed Youssef
-* kirolos
-* dania
-* Andrew Gamil
+* mohamed yousery [ Service Developer (Backend) ]
+* mohamed youssef [ Persistence & Database ]
+* kirolos medhat [ Prometheus Integrator (Metrics) ]
+* dania momen [ Grafana & Alerts (Dashboards) ]
+* andrew gamil [ Orchestration, CI & Docs (Integration + QA) ]
 
 ---
 
@@ -78,7 +78,7 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 
 Each team member owns one independently testable component. Tasks are balanced so workload is roughly equal.
 
-### 1 — Service Developer (Backend)
+### 1 — Service Developer (Backend) [ mohamed yousery ]
 
 **Deliverables**
 
@@ -90,7 +90,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 * Unit tests, `Dockerfile`, `openapi.yaml`, `seed.sql` (sample data).
   **Branch**: `feature/service-<your-name>`
 
-### 2 — Persistence & Database
+### 2 — Persistence & Database [ mohamed youssef ]
 
 **Deliverables**
 
@@ -100,7 +100,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 * DB helper module for service consumption
   **Branch**: `feature/db-<your-name>`
 
-### 3 — Prometheus Integrator (Metrics)
+### 3 — Prometheus Integrator (Metrics) [ kirolos medhat ]
 
 **Deliverables**
 
@@ -114,7 +114,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 * `verify_metrics.sh` and a mock exporter for parallel work
   **Branch**: `feature/prometheus-<your-name>`
 
-### 4 — Grafana & Alerts (Dashboards)
+### 4 — Grafana & Alerts (Dashboards) [ dania momen ]
 
 **Deliverables**
 
@@ -125,7 +125,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 * `generate_traffic.py` to simulate load
   **Branch**: `feature/grafana-<your-name>`
 
-### 5 — Orchestration, CI & Docs (Integration + QA)
+### 5 — Orchestration, CI & Docs (Integration + QA) [ andrew gamil ]
 
 **Deliverables**
 
