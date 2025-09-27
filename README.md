@@ -58,6 +58,20 @@ This repository contains a containerized URL shortener service instrumented for 
 
 ---
 
+## Instructor
+
+* IslamReda
+
+---
+
+## Project Files
+
+You can find the full project files here:
+
+[https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing](https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing)
+
+---
+
 ## Tech Stack
 
 * Docker & Docker Compose
@@ -101,6 +115,118 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 ```
 
 ---
+
+
+## Work Plan
+
+1. Research & Analysis
+
+   * Audience personas
+2. Visual Identity
+
+   * Logo design
+3. Main Designs
+
+   * Poster
+4. Complementary Products
+5. Review & Finalization
+6. Final Presentation
+
+---
+
+## Roles and Responsibilities
+
+
+### Component Ownership (5 equal, independent tasks)
+
+Each team member owns one independently testable component. Tasks are balanced so workload is roughly equal.
+
+### 1 — Service Developer (Backend) — mohamed yousery
+
+**Deliverables**
+
+* Service implementation with endpoints:
+
+  * `POST /shorten` → `{ "short_code": "abc123" }`
+  * `GET /{short_code}` → 302 redirect or 404
+  * `GET /metrics` → Prometheus exposition
+* Unit tests, `Dockerfile`, `openapi.yaml`, `seed.sql` (sample data).
+  **Branch**: `feature/service-<your-name>`
+
+---
+
+### 2 — Persistence & Database — mohamed youssef
+
+**Deliverables**
+
+* DB schema & migrations
+* `backup.sh` / `restore.sh`
+* Docker volume mapping recommendations and `sample.db`
+* DB helper module for service consumption
+  **Branch**: `feature/db-<your-name>`
+
+---
+
+### 3 — Prometheus Integrator (Metrics) — kirolos medhat
+
+**Deliverables**
+
+* `prometheus.yml` config to scrape `urlshort:8080`
+* Instrumentation naming conventions:
+
+  * `urlshort_created_total`
+  * `urlshort_redirects_total`
+  * `urlshort_404_total`
+  * `urlshort_request_latency_seconds` (histogram)
+* `verify_metrics.sh` and a mock exporter for parallel work
+  **Branch**: `feature/prometheus-<your-name>`
+
+---
+
+### 4 — Grafana & Alerts (Dashboards) — dania momen
+
+**Deliverables**
+
+* Grafana provisioning + `dashboard.json` with panels:
+
+  * Creation rate, redirect rate, 95th percentile latency, 404 rate
+* Alert rules for latency and error spikes
+* `generate_traffic.py` to simulate load
+  **Branch**: `feature/grafana-<your-name>`
+
+---
+
+### 5 — Orchestration, CI & Docs (Integration + QA) — andrew gamil
+
+**Deliverables**
+
+* `docker-compose.yml` wiring `urlshort`, `prometheus`, `grafana`, volumes
+* `spinup-and-test.sh` integration test script
+* CI pipeline (`.github/workflows/ci.yml`)
+* Final `README.md`, runbook, PR templates
+  **Branch**: `feature/integration-<your-name>`
+
+
+---
+
+## KPIs (Key Performance Indicators)
+
+* Response time (p95, p99)
+* System uptime / availability
+* Requests per second (throughput)
+* Error rate (4xx / 5xx, 404s)
+* User adoption rate (number of shortened URLs / active users)
+
+---
+
+
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
 
 ## Getting Started (Quickstart)
 
@@ -225,127 +351,3 @@ scrape_configs:
 * Next: move from SQLite → Postgres (HA), add alert routing (Slack/Email), add auth for Grafana, run e2e load tests, add healthchecks and readiness probes.
 
 ---
-
-## Work Plan
-
-1. Research & Analysis
-
-   * Audience personas
-2. Visual Identity
-
-   * Logo design
-3. Main Designs
-
-   * Poster
-4. Complementary Products
-5. Review & Finalization
-6. Final Presentation
-
----
-
-## Roles and Responsibilities
-
-
-### Component Ownership (5 equal, independent tasks)
-
-Each team member owns one independently testable component. Tasks are balanced so workload is roughly equal.
-
-### 1 — Service Developer (Backend) — mohamed yousery
-
-**Deliverables**
-
-* Service implementation with endpoints:
-
-  * `POST /shorten` → `{ "short_code": "abc123" }`
-  * `GET /{short_code}` → 302 redirect or 404
-  * `GET /metrics` → Prometheus exposition
-* Unit tests, `Dockerfile`, `openapi.yaml`, `seed.sql` (sample data).
-  **Branch**: `feature/service-<your-name>`
-
----
-
-### 2 — Persistence & Database — mohamed youssef
-
-**Deliverables**
-
-* DB schema & migrations
-* `backup.sh` / `restore.sh`
-* Docker volume mapping recommendations and `sample.db`
-* DB helper module for service consumption
-  **Branch**: `feature/db-<your-name>`
-
----
-
-### 3 — Prometheus Integrator (Metrics) — kirolos medhat
-
-**Deliverables**
-
-* `prometheus.yml` config to scrape `urlshort:8080`
-* Instrumentation naming conventions:
-
-  * `urlshort_created_total`
-  * `urlshort_redirects_total`
-  * `urlshort_404_total`
-  * `urlshort_request_latency_seconds` (histogram)
-* `verify_metrics.sh` and a mock exporter for parallel work
-  **Branch**: `feature/prometheus-<your-name>`
-
----
-
-### 4 — Grafana & Alerts (Dashboards) — dania momen
-
-**Deliverables**
-
-* Grafana provisioning + `dashboard.json` with panels:
-
-  * Creation rate, redirect rate, 95th percentile latency, 404 rate
-* Alert rules for latency and error spikes
-* `generate_traffic.py` to simulate load
-  **Branch**: `feature/grafana-<your-name>`
-
----
-
-### 5 — Orchestration, CI & Docs (Integration + QA) — andrew gamil
-
-**Deliverables**
-
-* `docker-compose.yml` wiring `urlshort`, `prometheus`, `grafana`, volumes
-* `spinup-and-test.sh` integration test script
-* CI pipeline (`.github/workflows/ci.yml`)
-* Final `README.md`, runbook, PR templates
-  **Branch**: `feature/integration-<your-name>`
-
-
----
-
-## KPIs (Key Performance Indicators)
-
-* Response time (p95, p99)
-* System uptime / availability
-* Requests per second (throughput)
-* Error rate (4xx / 5xx, 404s)
-* User adoption rate (number of shortened URLs / active users)
-
----
-
-## Instructor
-
-* IslamReda
-
----
-
-## Project Files
-
-You can find the full project files here:
-
-[https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing](https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing)
-
----
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-
