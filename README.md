@@ -115,24 +115,24 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 
 ## Work Plan
 
-1. Research & Analysis
+### 1. Research & Analysis
 
    * Audience personas
-2. Visual Identity
+### 2. Visual Identity
 
    * Logo design
-3. Main Designs
+### 3. Main Designs
 
    * Poster
-4. Complementary Products
-5. Review & Finalization
-6. Final Presentation
+### 4. Complementary Products
+### 5. Review & Finalization
+### 6. Final Presentation
 
 ---
 
 ## Roles & Responsibilities
 
-# Component Ownership (5 equal, independent tasks)
+### Component Ownership (5 equal, independent tasks)
 
 Each team member owns one independently testable component. Tasks are balanced so workload is roughly equal.
 
