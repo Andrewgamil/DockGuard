@@ -1,6 +1,8 @@
 # Monitoring a Containerized URL Shortener Webservice
 
-**Project Name:** URL Shortener Monitoring
+## Project Name:
+
+URL Shortener Monitoring
 
 ---
 ## Project Idea
