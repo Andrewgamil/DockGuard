@@ -15,7 +15,7 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 ## Table of Contents
 
 * [Project Overview](#project-overview)
-* [Team Members (pentaRae)](#team-members)
+* [Team Members (pentaRae)](#Team-Members)
 * [Instructor](#instructor)
 * [Project Files](#project-files)
 * [Tech Stack](#tech-stack)
