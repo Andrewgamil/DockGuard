@@ -1,6 +1,10 @@
 # Monitoring a Containerized URL Shortener Webservice
 
-**Project Idea:**
+**Project Name:** URL Shortener Monitoring
+
+---
+
+## Project Idea
 
 Build, containerize, and monitor a functional URL shortener webservice. The full stack — application + monitoring (Prometheus, Grafana) — runs locally using Docker.
 
@@ -9,7 +13,6 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 ## Table of Contents
 
 * [Project Overview](#project-overview)
-* [Drive Link (Documentation)](#drive-link-Documentation)
 * [Team Members](#team-members)
 * [Tech Stack](#tech-stack)
 * [Architecture](#architecture)
@@ -38,19 +41,28 @@ This repository contains a containerized URL shortener service instrumented for 
 
 ---
 
-## Drive Link (Documentation)
 
-link:  https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing
+## Team Members (pentaRae)
+
+* mohamed yousery 
+* mohamed youssef 
+* kirolos medhat 
+* dania momen 
+* andrew gamil 
 
 ---
 
-## Team Members
+## Instructor
 
-* mohamed yousery [ Service Developer (Backend) ]
-* mohamed youssef [ Persistence & Database ]
-* kirolos medhat [ Prometheus Integrator (Metrics) ]
-* dania momen [ Grafana & Alerts (Dashboards) ]
-* andrew gamil [ Orchestration, CI & Docs (Integration + QA) ]
+* IslamReda
+
+---
+
+## Project Files
+
+You can find the full project files here:
+
+[https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing](https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing)
 
 ---
 
@@ -82,11 +94,44 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 
 ---
 
-## Component Ownership (5 equal, independent tasks)
+## Repository Layout
+
+```
+/
+├─ service/                # Flask/Express app, Dockerfile, tests
+├─ db/                     # migrations, sample.db, backup scripts
+├─ prometheus/             # prometheus.yml, mock exporter
+├─ grafana/                # provisioning, dashboards, alerts
+├─ infra/                  # docker-compose.yml, volumes, scripts
+├─ docs/                   # runbook, API contract (openapi.yaml)
+└─ .github/workflows/      # CI pipeline
+```
+
+
+## Work Plan
+
+1. Research & Analysis
+
+   * Audience personas
+2. Visual Identity
+
+   * Logo design
+3. Main Designs
+
+   * Poster
+4. Complementary Products
+5. Review & Finalization
+6. Final Presentation
+
+---
+
+## Roles & Responsibilities
+
+# Component Ownership (5 equal, independent tasks)
 
 Each team member owns one independently testable component. Tasks are balanced so workload is roughly equal.
 
-### 1 — Service Developer (Backend) [ mohamed yousery ]
+### 1 — Service Developer (Backend) — mohamed yousery
 
 **Deliverables**
 
@@ -98,7 +143,9 @@ Each team member owns one independently testable component. Tasks are balanced s
 * Unit tests, `Dockerfile`, `openapi.yaml`, `seed.sql` (sample data).
   **Branch**: `feature/service-<your-name>`
 
-### 2 — Persistence & Database [ mohamed youssef ]
+---
+
+### 2 — Persistence & Database — mohamed youssef
 
 **Deliverables**
 
@@ -108,7 +155,9 @@ Each team member owns one independently testable component. Tasks are balanced s
 * DB helper module for service consumption
   **Branch**: `feature/db-<your-name>`
 
-### 3 — Prometheus Integrator (Metrics) [ kirolos medhat ]
+---
+
+### 3 — Prometheus Integrator (Metrics) — kirolos medhat
 
 **Deliverables**
 
@@ -122,7 +171,9 @@ Each team member owns one independently testable component. Tasks are balanced s
 * `verify_metrics.sh` and a mock exporter for parallel work
   **Branch**: `feature/prometheus-<your-name>`
 
-### 4 — Grafana & Alerts (Dashboards) [ dania momen ]
+---
+
+### 4 — Grafana & Alerts (Dashboards) — dania momen
 
 **Deliverables**
 
@@ -133,7 +184,9 @@ Each team member owns one independently testable component. Tasks are balanced s
 * `generate_traffic.py` to simulate load
   **Branch**: `feature/grafana-<your-name>`
 
-### 5 — Orchestration, CI & Docs (Integration + QA) [ andrew gamil ]
+---
+
+### 5 — Orchestration, CI & Docs (Integration + QA) — andrew gamil
 
 **Deliverables**
 
@@ -145,18 +198,28 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 ---
 
-## Repository Layout 
+---
 
-```
-/
-├─ service/                # Flask/Express app, Dockerfile, tests
-├─ db/                     # migrations, sample.db, backup scripts
-├─ prometheus/             # prometheus.yml, mock exporter
-├─ grafana/                # provisioning, dashboards, alerts
-├─ infra/                  # docker-compose.yml, volumes, scripts
-├─ docs/                   # runbook, API contract (openapi.yaml)
-└─ .github/workflows/      # CI pipeline
-```
+## KPIs (Key Performance Indicators)
+
+* Response time (p95, p99)
+* System uptime / availability
+* Requests per second (throughput)
+* Error rate (4xx / 5xx, 404s)
+* User adoption rate (number of shortened URLs / active users)
+
+---
+
+
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+
+---
 
 ---
 
@@ -200,7 +263,7 @@ docker-compose up -d prometheus grafana
 
 ## Testing & Verification
 
-The Integration owner should automate these checks in `spinup-and-test.sh`. 
+The Integration owner should automate these checks in `spinup-and-test.sh`.
 
 1. Create a short URL:
 
@@ -283,21 +346,4 @@ scrape_configs:
 * Next: move from SQLite → Postgres (HA), add alert routing (Slack/Email), add auth for Grafana, run e2e load tests, add healthchecks and readiness probes.
 
 ---
-
-## Contributing
-
-1. Pick an unclaimed component from **Component Ownership**.
-2. Create a branch `feature/<component>-<member-name>`.
-3. Add code, tests, and README updates for your component.
-4. Open a PR and request review from one other teammate.
-
----
-
-## License & Contact
-
-* License: MIT 
-* Maintainers / Contacts: see the **[Team Members](#team-members)** section above
-
----
-
 
