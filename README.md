@@ -15,7 +15,7 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 ## Table of Contents
 
 * [Project Overview](#project-overview)
-* [Team Members (pentaRae)](#Team-Members-(pentaRae))
+* [Team Members (pentaRae)](#team-Members-(pentaRae))
 * [Instructor](#instructor)
 * [Project Files](#project-files)
 * [Tech Stack](#tech-stack)
@@ -224,8 +224,6 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 This project is licensed under the MIT License.
 
-
----
 
 ---
 
