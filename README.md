@@ -113,7 +113,7 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 └─ .github/workflows/      # CI pipeline
 
 ```
-
+---
 
 ## Work Plan
 
