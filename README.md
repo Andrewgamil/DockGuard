@@ -23,13 +23,13 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 * [Work Plan](#work-plan)
 * [Roles & Responsibilities](#roles-and-responsibilities)
 * [KPIs (Key Performance Indicators)](#kpis-key-performance-indicators)
-* [License](#license)
 * [Getting Started (Quickstart)](#getting-started-quickstart)
 * [Running Locally (development)](#running-locally-development)
 * [Testing & Verification](#testing--verification)
 * [Monitoring & Dashboards](#monitoring--dashboards)
 * [Development Workflow & PR Checklist](#development-workflow--pr-checklist)
 * [Roadmap & Next Steps](#roadmap--next-steps)
+* [License](#license)
 
 ---
 
@@ -217,13 +217,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 * Error rate (4xx / 5xx, 404s)
 * User adoption rate (number of shortened URLs / active users)
 
----
 
-
-
-## License
-
-This project is licensed under the MIT License.
 
 ---
 
@@ -349,5 +343,14 @@ scrape_configs:
 
 * MVP: Service + Prometheus + Grafana + dashboard + CI integration
 * Next: move from SQLite → Postgres (HA), add alert routing (Slack/Email), add auth for Grafana, run e2e load tests, add healthchecks and readiness probes.
+
+---
+
+
+
+
+## License
+
+This project is licensed under the MIT License.
 
 ---
