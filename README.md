@@ -111,6 +111,7 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 ├─ infra/                  # docker-compose.yml, volumes, scripts
 ├─ docs/                   # runbook, API contract (openapi.yaml)
 └─ .github/workflows/      # CI pipeline
+
 ```
 
 
