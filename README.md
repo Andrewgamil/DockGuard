@@ -16,18 +16,21 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 
 * [Project Overview](#project-overview)
 * [Team Members](#team-members)
+* [Instructor](#instructor)
+* [Project Files](#project-files)
 * [Tech Stack](#tech-stack)
 * [Architecture](#architecture)
-* [Component Ownership (5 equal, independent tasks)](#component-ownership-5-equal-independent-tasks)
 * [Repository Layout](#repository-layout)
+* [Work Plan](#work-plan) 
+* [Roles & Responsibilities](#roles-&-responsibilities)
+* [KPIs (Key Performance Indicators)](#kpis-(-key-performance-indicators-))  
 * [Getting Started (Quickstart)](#getting-started-quickstart)
 * [Running Locally (development)](#running-locally-development)
 * [Testing & Verification](#testing--verification)
 * [Monitoring & Dashboards](#monitoring--dashboards)
 * [Development Workflow & PR Checklist](#development-workflow--pr-checklist)
 * [Roadmap & Next Steps](#roadmap--next-steps)
-* [Contributing](#contributing)
-* [License & Contact](#license--contact)
+* [License](#license)
 
 ---
 
