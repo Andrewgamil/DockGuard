@@ -205,8 +205,6 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 ---
 
----
-
 ## KPIs (Key Performance Indicators)
 
 * Response time (p95, p99)
@@ -217,9 +215,6 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 ---
 
-
-
----
 
 ## License
 
