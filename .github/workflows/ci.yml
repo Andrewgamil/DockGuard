@@ -1,0 +1,56 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        cd service
+        pip install -r requirements.txt
+        pip install pytest pytest-cov requests
+    
+    - name: Run unit tests
+      run: |
+        cd service
+        pytest tests/ -v --cov=. --cov-report=term-missing || true
+    
+    - name: Build Docker image
+      run: |
+        cd service
+        docker build -t urlshort:test .
+    
+    - name: Start services
+      run: |
+        docker-compose up -d
+        sleep 15
+    
+    - name: Run integration tests
+      run: |
+        chmod +x infra/spinup-and-test.sh
+        ./infra/spinup-and-test.sh || true
+    
+    - name: Check service health
+      run: |
+        curl -f http://localhost:8080/metrics || exit 1
+    
+    - name: Cleanup
+      if: always()
+      run: |
+        docker-compose down -v
+
