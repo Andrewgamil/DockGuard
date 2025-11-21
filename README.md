@@ -49,7 +49,7 @@ This repository contains a containerized URL shortener service instrumented for 
 ## Team Members (pentaRae)
 
 * mohamed yousery
-* mohamed youssef
+* youssef abuzeid
 * kirolos medhat
 * dania momen
 * andrew gamil
@@ -133,7 +133,7 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 
 Each team member owns one independently testable component. Tasks are balanced so workload is roughly equal.
 
-### 1 — Service Developer (Backend) — mohamed yousery
+### 1 — Service Developer (Backend) — youssef abuzeid
 
 **Deliverables**
 
@@ -145,7 +145,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 ---
 
-### 2 — Persistence & Database — mohamed youssef
+### 2 — Persistence & Database — mohamed yousery
 
 **Deliverables**
 
@@ -201,7 +201,17 @@ Each team member owns one independently testable component. Tasks are balanced s
 * User adoption rate (number of shortened URLs / active users)
 
 ---
+## Screenshots
 
+### Grafana Dashboard
+![Grafana Dashboard](docs/images/grafana-dashboard.png)
+
+### Prometheus Metrics
+![Prometheus](docs/images/prometheus-metrics.png)
+
+### Service Running
+![Docker Compose](docs/images/docker-running.png)
+---
 ## Getting Started (Quickstart)
 
 ### Prerequisites
