@@ -18,6 +18,7 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 * [Team Members (pentaRae)](#team-members-pentarae)
 * [Instructor](#instructor)
 * [Project Files](#project-files)
+* [Screenshots](#screenshots)
 * [Tech Stack](#tech-stack)
 * [Architecture](#architecture)
 * [Repository Layout](#repository-layout)
@@ -69,7 +70,17 @@ You can find the full project files here:
 <https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing>
 
 ---
+## Screenshots
 
+### Grafana Dashboard
+![Grafana Dashboard](docs/images/grafana-dashboard.png)
+
+### Prometheus Metrics
+![Prometheus](docs/images/prometheus-metrics.png)
+
+### Service Running
+![Docker Compose](docs/images/docker-running.png)
+---
 ## Tech Stack
 
 * Docker & Docker Compose
@@ -201,17 +212,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 * User adoption rate (number of shortened URLs / active users)
 
 ---
-## Screenshots
 
-### Grafana Dashboard
-![Grafana Dashboard](docs/images/grafana-dashboard.png)
-
-### Prometheus Metrics
-![Prometheus](docs/images/prometheus-metrics.png)
-
-### Service Running
-![Docker Compose](docs/images/docker-running.png)
----
 ## Getting Started (Quickstart)
 
 ### Prerequisites
