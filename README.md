@@ -5,6 +5,7 @@
 URL Shortener Monitoring
 
 ---
+
 ## Project Idea
 
 Build, containerize, and monitor a functional URL shortener webservice. The full stack — application + monitoring (Prometheus, Grafana) — runs locally using Docker.
@@ -33,8 +34,6 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 
 ---
 
-
-
 ## Project Overview
 
 This repository contains a containerized URL shortener service instrumented for monitoring. The service will:
@@ -47,14 +46,13 @@ This repository contains a containerized URL shortener service instrumented for 
 
 ---
 
-
 ## Team Members (pentaRae)
 
-* mohamed yousery 
+* mohamed yousery
 * mohamed youssef
-* kirolos medhat 
-* dania momen 
-* andrew gamil 
+* kirolos medhat
+* dania momen
+* andrew gamil
 
 ---
 
@@ -68,14 +66,14 @@ This repository contains a containerized URL shortener service instrumented for 
 
 You can find the full project files here:
 
-[https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing](https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing)
+<https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing>
 
 ---
 
 ## Tech Stack
 
 * Docker & Docker Compose
-* Web framework: Flask (Python) **or** Express (Node.js)
+* Web framework: FastAPI (Python)
 * Database: SQLite (local development)
 * Monitoring: Prometheus
 * Visualization & alerting: Grafana
@@ -89,7 +87,7 @@ All services run on a local Docker network and communicate over service hostname
 ```
 +-----------+      +-------------+      +-----------+
 | urlshort  | ---> | Prometheus  | ---> | Grafana   |
-| (Flask)   |      | (scrapes /metrics) | (dashboards)
+| (FastAPI) |      | (scrapes /metrics) | (dashboards)
 +-----------+      +-------------+      +-----------+
       |
       v
@@ -100,14 +98,13 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 
 ---
 
-
 ## Repository Layout
 
 ```
 /
-├─ service/                # Flask/Express app, Dockerfile, tests
+├─ service/                # FastAPI app, Dockerfile, tests
 ├─ db/                     # migrations, sample.db, backup scripts
-├─ prometheus/             # prometheus.yml, mock exporter
+├─ prometheus/             # prometheus.yml
 ├─ grafana/                # provisioning, dashboards, alerts
 ├─ infra/                  # docker-compose.yml, volumes, scripts
 ├─ docs/                   # runbook, API contract (openapi.yaml)
@@ -116,17 +113,13 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 
 ---
 
-
 ## Work Plan
 
-1. Research & Analysis
-
+1. Research & Analysis  
    * Audience personas
-2. Visual Identity
-
+2. Visual Identity  
    * Logo design
-3. Main Designs
-
+3. Main Designs  
    * Poster
 4. Complementary Products
 5. Review & Finalization
@@ -136,7 +129,6 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 
 ## Roles and Responsibilities
 
-
 ### Component Ownership (5 equal, independent tasks)
 
 Each team member owns one independently testable component. Tasks are balanced so workload is roughly equal.
@@ -145,13 +137,11 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 **Deliverables**
 
-* Service implementation with endpoints:
-
-  * `POST /shorten` → `{ "short_code": "abc123" }`
-  * `GET /{short_code}` → 302 redirect or 404
-  * `GET /metrics` → Prometheus exposition
-* Unit tests, `Dockerfile`, `openapi.yaml`, `seed.sql` (sample data).
-  **Branch**: `feature/service-<your-name>`
+* Service implementation with endpoints:  
+   * `POST /shorten` → `{ "short_code": "abc123" }`  
+   * `GET /{short_code}` → 302 redirect or 404  
+   * `GET /metrics` → Prometheus exposition
+* Unit tests, `Dockerfile`, `openapi.yaml`, `seed.sql` (sample data).**Branch**: `feature/service-<your-name>`
 
 ---
 
@@ -162,8 +152,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 * DB schema & migrations
 * `backup.sh` / `restore.sh`
 * Docker volume mapping recommendations and `sample.db`
-* DB helper module for service consumption
-  **Branch**: `feature/db-<your-name>`
+* DB helper module for service consumption**Branch**: `feature/db-<your-name>`
 
 ---
 
@@ -172,14 +161,12 @@ Each team member owns one independently testable component. Tasks are balanced s
 **Deliverables**
 
 * `prometheus.yml` config to scrape `urlshort:8080`
-* Instrumentation naming conventions:
-
-  * `urlshort_created_total`
-  * `urlshort_redirects_total`
-  * `urlshort_404_total`
-  * `urlshort_request_latency_seconds` (histogram)
-* `verify_metrics.sh` and a mock exporter for parallel work
-  **Branch**: `feature/prometheus-<your-name>`
+* Instrumentation naming conventions:  
+   * `urlshort_created_total`  
+   * `urlshort_redirects_total`  
+   * `urlshort_404_total`  
+   * `urlshort_request_latency_seconds` (histogram)
+* `verify_metrics.sh` and a mock exporter for parallel work**Branch**: `feature/prometheus-<your-name>`
 
 ---
 
@@ -187,12 +174,10 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 **Deliverables**
 
-* Grafana provisioning + `dashboard.json` with panels:
-
-  * Creation rate, redirect rate, 95th percentile latency, 404 rate
+* Grafana provisioning + `dashboard.json` with panels:  
+   * Creation rate, redirect rate, 95th percentile latency, 404 rate
 * Alert rules for latency and error spikes
-* `generate_traffic.py` to simulate load
-  **Branch**: `feature/grafana-<your-name>`
+* `generate_traffic.py` to simulate load**Branch**: `feature/grafana-<your-name>`
 
 ---
 
@@ -203,9 +188,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 * `docker-compose.yml` wiring `urlshort`, `prometheus`, `grafana`, volumes
 * `spinup-and-test.sh` integration test script
 * CI pipeline (`.github/workflows/ci.yml`)
-* Final `README.md`, runbook, PR templates
-  **Branch**: `feature/integration-<your-name>`
-
+* Final `README.md`, runbook, PR templates**Branch**: `feature/integration-<your-name>`
 
 ---
 
@@ -217,29 +200,26 @@ Each team member owns one independently testable component. Tasks are balanced s
 * Error rate (4xx / 5xx, 404s)
 * User adoption rate (number of shortened URLs / active users)
 
-
-
 ---
-
 
 ## Getting Started (Quickstart)
 
 ### Prerequisites
 
 * Docker & Docker Compose installed
-* (Optional) Python 3.11+ or Node 18+ for local development
+* (Optional) Python 3.11+ for local development
 
 ### Quickstart
 
 ```bash
-git clone https://github.com/<your-org>/urlshort-monitoring.git
-cd urlshort-monitoring
+git clone https://github.com/Andrewgamil/DockGuard.git
+cd DockGuard
 docker-compose up --build
 ```
 
 * Service API: `http://localhost:8080`
 * Prometheus UI: `http://localhost:9090`
-* Grafana UI: `http://localhost:3000`
+* Grafana UI: `http://localhost:3000` (admin/admin)
 
 ---
 
@@ -249,7 +229,7 @@ Build and run the service image:
 
 ```bash
 docker build -t urlshort ./service
-docker run --rm -p 8080:8080 -v "$(pwd)/db:/data" --name urlshort urlshort
+docker run --rm -p 8080:8080 -v "$(pwd)/service/data:/app/data" --name urlshort urlshort
 ```
 
 Start monitoring components:
@@ -293,6 +273,13 @@ curl http://localhost:8080/metrics | head
 curl 'http://localhost:9090/api/v1/query?query=urlshort_created_total'
 ```
 
+5. Run integration tests:
+
+```bash
+chmod +x infra/spinup-and-test.sh
+./infra/spinup-and-test.sh
+```
+
 ---
 
 ## Monitoring & Dashboards
@@ -300,7 +287,7 @@ curl 'http://localhost:9090/api/v1/query?query=urlshort_created_total'
 **Prometheus**
 
 * Scrape target: `urlshort:8080/metrics`
-* Example `prometheus.yml` snippet:
+* Configuration in `prometheus/prometheus.yml`:
 
 ```yaml
 global:
@@ -313,44 +300,38 @@ scrape_configs:
 
 **Grafana**
 
-* Panels to include:
-
-  * `rate(urlshort_created_total[5m])`
-  * `rate(urlshort_redirects_total[5m])`
-  * `histogram_quantile(0.95, sum(rate(urlshort_request_latency_seconds_bucket[5m])) by (le))`
-  * `rate(urlshort_404_total[5m])`
-* Alerts:
-
-  * sustained high 95th percentile latency (example threshold: > 1s)
-  * sudden spike in 404 rate
+* Panels include:  
+   * `rate(urlshort_created_total[5m])`  
+   * `rate(urlshort_redirects_total[5m])`  
+   * `histogram_quantile(0.95, sum(rate(urlshort_request_latency_seconds_bucket[5m])) by (le))`  
+   * `rate(urlshort_404_total[5m])`
+* Dashboard automatically provisioned on startup
+* Access at http://localhost:3000 (admin/admin)
 
 ---
 
 ## Development Workflow & PR Checklist
 
 * Branching: `feature/<component>-<your-name>`
-* PR must include:
-
-  * Build proof (`docker build` command output or CI run)
-  * Unit tests and results
-  * README updates for that component
-  * Integration smoke tests (curl commands) and expected output
-  * One other teammate assigned to review and sign off
+* PR must include:  
+   * Build proof (`docker build` command output or CI run)  
+   * Unit tests and results  
+   * README updates for that component  
+   * Integration smoke tests (curl commands) and expected output  
+   * One other teammate assigned to review and sign off
 
 ---
 
 ## Roadmap & Next Steps
 
-* MVP: Service + Prometheus + Grafana + dashboard + CI integration
+* MVP: Service + Prometheus + Grafana + dashboard + CI integration ✅
 * Next: move from SQLite → Postgres (HA), add alert routing (Slack/Email), add auth for Grafana, run e2e load tests, add healthchecks and readiness probes.
 
 ---
-
-
-
 
 ## License
 
 This project is licensed under the MIT License.
 
 ---
+

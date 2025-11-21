@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: URL Shortener API
+  version: 1.0.0
+  description: API for shortening URLs and redirecting to original URLs
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+paths:
+  /shorten:
+    post:
+      summary: Shorten a URL
+      description: Creates a short code for a given URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - url
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  example: "https://example.com"
+      responses:
+        '200':
+          description: URL shortened successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  short_code:
+                    type: string
+                    example: "abc123"
+        '400':
+          description: Invalid request (missing or invalid URL)
+
+  /{short_code}:
+    get:
+      summary: Redirect to original URL
+      description: Redirects to the original URL associated with the short code
+      parameters:
+        - name: short_code
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "abc123"
+      responses:
+        '302':
+          description: Redirect to original URL
+          headers:
+            Location:
+              schema:
+                type: string
+        '404':
+          description: Short code not found
+
+  /metrics:
+    get:
+      summary: Prometheus metrics
+      description: Exposes Prometheus-compatible metrics
+      responses:
+        '200':
+          description: Metrics in Prometheus format
+          content:
+            text/plain:
+              schema:
+                type: string
+
