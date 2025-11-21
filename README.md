@@ -18,6 +18,7 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 * [Team Members (pentaRae)](#team-members-pentarae)
 * [Instructor](#instructor)
 * [Project Files](#project-files)
+* [Screenshots](#screenshots)
 * [Tech Stack](#tech-stack)
 * [Architecture](#architecture)
 * [Repository Layout](#repository-layout)
@@ -27,7 +28,6 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 * [Getting Started (Quickstart)](#getting-started-quickstart)
 * [Running Locally (development)](#running-locally-development)
 * [Testing & Verification](#testing--verification)
-* [Monitoring & Dashboards](#monitoring--dashboards)
 * [Development Workflow & PR Checklist](#development-workflow--pr-checklist)
 * [Roadmap & Next Steps](#roadmap--next-steps)
 * [License](#license)
@@ -69,7 +69,29 @@ You can find the full project files here:
 <https://drive.google.com/drive/folders/1jR7lZjUpiV5e8a4LY72g0HVObMfwfbnY?usp=sharing>
 
 ---
+## Screenshots
 
+### Grafana Dashboard
+![Grafana Dashboard](docs/images/grafana-1.jpg)
+![Grafana Dashboard](docs/images/grafana-2.jpg)
+
+### Prometheus Metrics
+#### Prometheus Redirects Total
+![Prometheus](docs/images/Prometheus-redirects-total.jpg)
+#### Prometheus Created Total
+![Prometheus](docs/images/Prometheus-created-total.jpg)
+
+### Raw Metrics
+![Raw Metrics](docs/images/raw-metrics-1.jpg)
+![Raw Metrics](docs/images/raw-metrics-2.jpg)
+
+### Service Running
+#### Docker Compose
+![Docker Compose](docs/images/terminal-1.jpg)
+![Docker Compose](docs/images/terminal-2.jpg)
+![Docker Compose](docs/images/terminal-3.jpg)
+![Docker Compose](docs/images/terminal-4.jpg)
+---
 ## Tech Stack
 
 * Docker & Docker Compose
@@ -101,14 +123,54 @@ Prometheus scrapes the service at `http://urlshort:8080/metrics`.
 ## Repository Layout
 
 ```
-/
-├─ service/                # FastAPI app, Dockerfile, tests
-├─ db/                     # migrations, sample.db, backup scripts
-├─ prometheus/             # prometheus.yml
-├─ grafana/                # provisioning, dashboards, alerts
-├─ infra/                  # docker-compose.yml, volumes, scripts
-├─ docs/                   # runbook, API contract (openapi.yaml)
-└─ .github/workflows/      # CI pipeline
+DockGuard/
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml                    # CI/CD pipeline
+│
+├── db/
+│   ├── backup.sh                     # Database backup script
+│   ├── restore.sh                    # Database restore script
+│   └── seed.sql                      # Sample seed data
+│
+├── docs/
+│   ├── openapi.yaml                  # API documentation
+│   └── runbook.md                    # Operations runbook
+│
+├── grafana/
+│   └── provisioning/
+│       ├── dashboards/
+│       │   ├── dashboard.yml
+│       │   └── urlshort-dashboard.json
+│       └── datasources/
+│           └── prometheus.yml
+│
+├── infra/
+│   ├── generate_traffic.py           # Traffic generator
+│   └── spinup-and-test.sh           # Integration tests
+│
+├── prometheus/
+│   └── prometheus.yml                # Prometheus config
+│
+├── service/
+│   ├── tests/
+│   │   ├── __init__.py
+│   │   └── test_main.py
+│   ├── .dockerignore
+│   ├── Dockerfile
+│   ├── main.py                       # FastAPI app
+│   ├── models.py                     # Database models
+│   ├── requirements-test.txt
+│   └── requirements.txt
+│
+├── .gitignore
+├── docker-compose.yml                #  Main orchestration
+├── GENERATE_TRAFFIC.ps1
+├── QUICKSTART.md
+├── README.md                         #  Main documentation
+├── SETUP_INSTRUCTIONS.md
+└── TEST_NOW.md
 ```
 
 ---
@@ -201,122 +263,202 @@ Each team member owns one independently testable component. Tasks are balanced s
 * User adoption rate (number of shortened URLs / active users)
 
 ---
-## Screenshots
 
-### Grafana Dashboard
-![Grafana Dashboard](docs/images/grafana-dashboard.png)
-
-### Prometheus Metrics
-![Prometheus](docs/images/prometheus-metrics.png)
-
-### Service Running
-![Docker Compose](docs/images/docker-running.png)
----
 ## Getting Started (Quickstart)
+
 
 ### Prerequisites
 
-* Docker & Docker Compose installed
-* (Optional) Python 3.11+ for local development
+1. **Install Docker Desktop**
+
+   - Download from: https://www.docker.com/products/docker-desktop/
+   - Install and restart your computer
+   - Make sure Docker Desktop is running (you'll see the Docker icon in your system tray)
+
+2. **Verify Docker is installed**
+   - Open PowerShell or Command Prompt
+   - Run: `docker --version`
+   - Run: `docker-compose --version`
+   - Both commands should show version numbers
+
+3. (Optional) Python 3.11+ for local development
+
+
 
 ### Quickstart
 
+## Step 1: Open Terminal/PowerShell
+
+   - Navigate to the project folder:
+     ```powershell
+     Ex: cd C:\Users\admin\Docs\project
+     ```
+## Step 2: Start All Services
+
 ```bash
-git clone https://github.com/Andrewgamil/DockGuard.git
-cd DockGuard
 docker-compose up --build
 ```
 
-* Service API: `http://localhost:8080`
-* Prometheus UI: `http://localhost:9090`
-* Grafana UI: `http://localhost:3000` (admin/admin)
+This will:
+- Build the URL shortener service
+- Start Prometheus
+- Start Grafana
+- Create necessary volumes
 
----
+## Step 3: Verify Services
 
-## Running Locally (development)
+Wait about 10-15 seconds for services to start, then:
 
-Build and run the service image:
+1. **Service API**: http://localhost:8080/metrics
+2. **Prometheus**: http://localhost:9090
+3. **Grafana**: http://localhost:3000 (login: admin/admin)
+
+
+## Stop Services
 
 ```bash
-docker build -t urlshort ./service
-docker run --rm -p 8080:8080 -v "$(pwd)/service/data:/app/data" --name urlshort urlshort
+docker-compose down
 ```
 
-Start monitoring components:
+To also remove volumes:
 
 ```bash
-docker-compose up -d prometheus grafana
+docker-compose down -v
 ```
+
+## Troubleshooting
+
+### Port Already in Use
+
+If ports 8080, 9090, or 3000 are in use, you can modify `docker-compose.yml` to use different ports.
+
+### Services Not Starting
+
+Check logs:
+```bash
+docker-compose logs urlshort
+docker-compose logs prometheus
+docker-compose logs grafana
+```
+
+### Database Issues
+
+The database is stored in a Docker volume. To reset:
+```bash
+docker-compose down -v
+docker-compose up --build
+```
+
+
 
 ---
 
 ## Testing & Verification
+# Test Your Running Project
 
-The Integration owner should automate these checks in `spinup-and-test.sh`.
+## Your services are running! Here's how to test them:
 
-1. Create a short URL:
+### 1. Test URL Shortening
 
-```bash
-curl -s -X POST http://localhost:8080/shorten \
-  -H "Content-Type: application/json" \
-  -d '{"url":"https://example.com"}'
-# expected: {"short_code":"abc123"}
+Open a **NEW PowerShell window** and run:
+
+```powershell
+# Create a short URL
+curl -X POST http://localhost:8080/shorten -H "Content-Type: application/json" -d '{\"url\":\"https://example.com\"}'
 ```
 
-2. Follow redirect:
-
-```bash
-curl -sI http://localhost:8080/abc123
-# expected: HTTP/1.1 302 Found + Location header
+You should get a response like:
+```json
+{"short_code":"abc123"}
 ```
 
-3. Metrics present:
+### 2. Test the Redirect
 
-```bash
-curl http://localhost:8080/metrics | head
-# expected: Prometheus exposition lines including custom metrics
+Use the short_code from step 1:
+
+```powershell
+curl -I http://localhost:8080/YOUR_SHORT_CODE
 ```
 
-4. Prometheus query:
+Replace `YOUR_SHORT_CODE` with the code you got (e.g., `abc123`)
 
-```bash
-curl 'http://localhost:9090/api/v1/query?query=urlshort_created_total'
+You should see: `HTTP/1.1 302 Found`
+
+### 3. Check Metrics
+
+Open in browser: http://localhost:8080/metrics
+
+You should see Prometheus metrics including:
+- `urlshort_created_total`
+- `urlshort_redirects_total`
+- `urlshort_404_total`
+- `urlshort_request_latency_seconds`
+
+### 4. View Prometheus
+
+Open in browser: http://localhost:9090
+
+- Click "Status" → "Targets" to see if urlshort is being scraped (should show UP)
+- Go to "Graph" tab
+- Try query: `urlshort_created_total`
+- Click "Execute"
+
+### 5. View Grafana Dashboard
+
+Open in browser: http://localhost:3000
+
+- Login with:
+  - Username: `admin`
+  - Password: `admin`
+- Go to: **Dashboards** → **URL Shortener Monitoring**
+- You should see graphs showing your metrics!
+
+### 6. Generate Some Traffic
+
+In PowerShell:
+
+```powershell
+cd C:\Users\andre\Downloads\task\infra
+python generate_traffic.py 20 5
 ```
 
-5. Run integration tests:
-
-```bash
-chmod +x infra/spinup-and-test.sh
-./infra/spinup-and-test.sh
-```
+This will create 20 URLs and access them. Then watch the Grafana dashboard update in real-time!
 
 ---
 
-## Monitoring & Dashboards
+## Keep Services Running
 
-**Prometheus**
+The services will keep running in your PowerShell window. You'll see logs scrolling.
 
-* Scrape target: `urlshort:8080/metrics`
-* Configuration in `prometheus/prometheus.yml`:
+**To stop services:**
+- Press `Ctrl + C` in the PowerShell window where docker-compose is running
 
-```yaml
-global:
-  scrape_interval: 15s
-scrape_configs:
-  - job_name: 'urlshort'
-    static_configs:
-      - targets: ['urlshort:8080']
+**To stop and remove everything:**
+```powershell
+docker-compose down
 ```
 
-**Grafana**
+**To start again later:**
+```powershell
+docker-compose up
+```
 
-* Panels include:  
-   * `rate(urlshort_created_total[5m])`  
-   * `rate(urlshort_redirects_total[5m])`  
-   * `histogram_quantile(0.95, sum(rate(urlshort_request_latency_seconds_bucket[5m])) by (le))`  
-   * `rate(urlshort_404_total[5m])`
-* Dashboard automatically provisioned on startup
-* Access at http://localhost:3000 (admin/admin)
+(No need for `--build` unless you changed code)
+
+---
+
+## Success Indicators
+
+ All three containers are running
+ Prometheus scraping metrics (you see GET /metrics requests)
+ Grafana dashboard accessible
+ Can create and redirect URLs
+ Metrics visible in Prometheus
+ Dashboard shows data in Grafana
+
+**Your project is fully functional! **
+
+
 
 ---
 
@@ -334,7 +476,7 @@ scrape_configs:
 
 ## Roadmap & Next Steps
 
-* MVP: Service + Prometheus + Grafana + dashboard + CI integration ✅
+* MVP: Service + Prometheus + Grafana + dashboard + CI integration 
 * Next: move from SQLite → Postgres (HA), add alert routing (Slack/Email), add auth for Grafana, run e2e load tests, add healthchecks and readiness probes.
 
 ---
