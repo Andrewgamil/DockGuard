@@ -73,13 +73,22 @@ You can find the full project files here:
 ## Screenshots
 
 ### Grafana Dashboard
-![Grafana Dashboard](docs/images/grafana-dashboard.png)
+![Grafana Dashboard](docs/images/grafana-1.jpg)
+![Grafana Dashboard](docs/images/grafana-2.jpg)
 
 ### Prometheus Metrics
-![Prometheus](docs/images/prometheus-metrics.png)
+![Prometheus](docs/images/Prometheus-redirects-total.jpg)
+![Prometheus](docs/images/Prometheus-created-total.jpg)
+
+### Raw Metrics
+![Raw Metrics](docs/images/raw-metrics-1.jpg)
+![Raw Metrics](docs/images/raw-metrics-2.jpg)
 
 ### Service Running
-![Docker Compose](docs/images/docker-running.png)
+![Docker Compose](docs/images/terminal-1.jpg)
+![Docker Compose](docs/images/terminal-2.jpg)
+![Docker Compose](docs/images/terminal-3.jpg)
+![Docker Compose](docs/images/terminal-4.jpg)
 ---
 ## Tech Stack
 
@@ -335,7 +344,7 @@ scrape_configs:
 
 ## Roadmap & Next Steps
 
-* MVP: Service + Prometheus + Grafana + dashboard + CI integration ✅
+* MVP: Service + Prometheus + Grafana + dashboard + CI integration 
 * Next: move from SQLite → Postgres (HA), add alert routing (Slack/Email), add auth for Grafana, run e2e load tests, add healthchecks and readiness probes.
 
 ---
