@@ -28,7 +28,6 @@ Build, containerize, and monitor a functional URL shortener webservice. The full
 * [Getting Started (Quickstart)](#getting-started-quickstart)
 * [Running Locally (development)](#running-locally-development)
 * [Testing & Verification](#testing--verification)
-* [Monitoring & Dashboards](#monitoring--dashboards)
 * [Development Workflow & PR Checklist](#development-workflow--pr-checklist)
 * [Roadmap & Next Steps](#roadmap--next-steps)
 * [License](#license)
