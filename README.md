@@ -77,7 +77,9 @@ You can find the full project files here:
 ![Grafana Dashboard](docs/images/grafana-2.jpg)
 
 ### Prometheus Metrics
+#### Prometheus Redirects Total
 ![Prometheus](docs/images/Prometheus-redirects-total.jpg)
+#### Prometheus Created Total
 ![Prometheus](docs/images/Prometheus-created-total.jpg)
 
 ### Raw Metrics
@@ -85,7 +87,7 @@ You can find the full project files here:
 ![Raw Metrics](docs/images/raw-metrics-2.jpg)
 
 ### Service Running
-#### Service Running
+#### Docker Compose
 ![Docker Compose](docs/images/terminal-1.jpg)
 ![Docker Compose](docs/images/terminal-2.jpg)
 ![Docker Compose](docs/images/terminal-3.jpg)
