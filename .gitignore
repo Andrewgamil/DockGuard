@@ -33,7 +33,7 @@ env/
 service/data/
 db/backups/
 
-# Old app folder (not needed in new structure)
+
 app/
 app.zip
 
