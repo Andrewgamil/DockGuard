@@ -85,6 +85,7 @@ You can find the full project files here:
 ![Raw Metrics](docs/images/raw-metrics-2.jpg)
 
 ### Service Running
+#### Service Running
 ![Docker Compose](docs/images/terminal-1.jpg)
 ![Docker Compose](docs/images/terminal-2.jpg)
 ![Docker Compose](docs/images/terminal-3.jpg)
