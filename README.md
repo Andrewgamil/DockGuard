@@ -314,56 +314,6 @@ Wait about 10-15 seconds for services to start, then:
 2. **Prometheus**: http://localhost:9090
 3. **Grafana**: http://localhost:3000 (login: admin/admin)
 
-## Step 4: Test the Service
-
-### Create a Short URL
-
-```bash
-curl -X POST http://localhost:8080/shorten \
-  -H "Content-Type: application/json" \
-  -d '{"url":"https://example.com"}'
-```
-
-Response:
-```json
-{"short_code": "abc123"}
-```
-
-### Use the Short URL
-
-```bash
-curl -I http://localhost:8080/abc123
-```
-
-You should see a `302 Found` redirect.
-
-## Step 5: View Metrics
-
-1. Open Prometheus: http://localhost:9090
-2. Try query: `urlshort_created_total`
-3. Open Grafana: http://localhost:3000
-4. Login with admin/admin
-5. Go to Dashboards → URL Shortener Monitoring
-
-## Step 6: Generate Traffic (Optional)
-
-```bash
-cd infra
-python3 generate_traffic.py 50 5
-```
-
-This will create 50 URLs and access them with 5 threads.
-
-## Step 7: Run Integration Tests
-
-```bash
-# On Linux/Mac
-chmod +x infra/spinup-and-test.sh
-./infra/spinup-and-test.sh
-
-# On Windows (PowerShell)
-.\infra\spinup-and-test.sh
-```
 
 ## Stop Services
 
