@@ -1,7 +1,7 @@
 # Traffic Generator Script for PowerShell
 # This will create URLs and access them to generate metrics
 
-Write-Host "🚀 Generating traffic to URL Shortener..." -ForegroundColor Cyan
+Write-Host " Generating traffic to URL Shortener..." -ForegroundColor Cyan
 Write-Host ""
 
 $baseUrl = "http://localhost:8080"
@@ -26,7 +26,7 @@ for ($i = 1; $i -le $numRequests; $i++) {
 }
 
 Write-Host ""
-Write-Host "✅ Created $($shortCodes.Count) short URLs" -ForegroundColor Green
+Write-Host " Created $($shortCodes.Count) short URLs" -ForegroundColor Green
 Write-Host ""
 
 # Phase 2: Access the short URLs
@@ -44,7 +44,7 @@ foreach ($code in $shortCodes) {
     Start-Sleep -Milliseconds 100
 }
 
-Write-Host "✅ Accessed $accessCount URLs" -ForegroundColor Green
+Write-Host " Accessed $accessCount URLs" -ForegroundColor Green
 Write-Host ""
 
 # Phase 3: Test 404s
@@ -55,13 +55,13 @@ foreach ($code in $fakeCodes) {
         Invoke-WebRequest -Uri "$baseUrl/$code" -MaximumRedirection 0 -ErrorAction Stop
     } catch {
         if ($_.Exception.Response.StatusCode -eq 404) {
-            Write-Host "  ✅ 404 handled correctly for: $code" -ForegroundColor Green
+            Write-Host "   404 handled correctly for: $code" -ForegroundColor Green
         }
     }
 }
 
 Write-Host ""
-Write-Host "🎉 Traffic generation complete!" -ForegroundColor Cyan
+Write-Host " Traffic generation complete!" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Now check your dashboards:" -ForegroundColor Yellow
 Write-Host "  - Prometheus: http://localhost:9090" -ForegroundColor White
