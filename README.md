@@ -207,7 +207,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 ---
 
-### 2 — Persistence & Database — mohamed yousery
+### 2 — Persistence & Database — youssef abuzeid
 
 **Deliverables**
 
@@ -218,7 +218,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 ---
 
-### 3 — Prometheus Integrator (Metrics) — kirolos medhat
+### 3 — Prometheus Integrator (Metrics) — andrew gamil
 
 **Deliverables**
 
@@ -232,7 +232,7 @@ Each team member owns one independently testable component. Tasks are balanced s
 
 ---
 
-### 4 — Grafana & Alerts (Dashboards) — dania momen
+### 4 — Grafana & Alerts (Dashboards) — andrew gamil
 
 **Deliverables**
 
